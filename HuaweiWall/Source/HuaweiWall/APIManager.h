@@ -37,6 +37,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "HTTP")
 	void GetSentenceData();
 
+	UFUNCTION(BlueprintCallable, Category = "HTTP")
+	void PostIDData();
+
 	void LoadJsonData(FString& JsonContent);
 protected:
 	// Called when the game starts or when spawned

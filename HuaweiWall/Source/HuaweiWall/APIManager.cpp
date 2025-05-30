@@ -32,6 +32,11 @@ void AAPIManager::Tick(float DeltaTime)
 
 void AAPIManager::GetSentenceData()
 {
+
+    if (getDataLink.IsEmpty())
+    {
+        return;
+    }
     TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = FHttpModule::Get().CreateRequest();
     UE_LOG(LogTemp, Log, TEXT("getDataLink: %s"), *getDataLink);
     Request->SetURL(getDataLink);
@@ -52,6 +57,41 @@ void AAPIManager::GetSentenceData()
             }
         });
     Request->ProcessRequest();
+}
+
+void AAPIManager::PostIDData()
+{
+    if (postDataLink.IsEmpty())
+    {
+        return;
+    }
+    if (IdArray.Num() == 0)
+    {
+        return;
+    }
+    FString tempID = "";
+    tempID = IdArray[0]; // Get the first ID from the array
+    IdArray.RemoveAt(0);
+    
+    TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = FHttpModule::Get().CreateRequest();
+    Request->SetURL(postDataLink + tempID);
+    Request->SetVerb("POST");
+    Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
+    Request->SetContentAsString(TEXT("")); // Empty body
+    Request->OnProcessRequestComplete().BindLambda([](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
+        {
+            if (bWasSuccessful && Response.IsValid())
+            {
+                UE_LOG(LogTemp, Log, TEXT("Response: %s"), *Response->GetContentAsString());
+            }
+            else
+            {
+                UE_LOG(LogTemp, Error, TEXT("Request failed"));
+            }
+        });
+    Request->ProcessRequest();
+
+
 }
 
 void AAPIManager::LoadJsonData(FString& JsonContent)

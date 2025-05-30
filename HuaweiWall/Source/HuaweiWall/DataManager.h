@@ -26,6 +26,9 @@ public:
 
 	UPROPERTY(BlueprintReadOnly)
 	int32 WindowHeight;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Sentence")
+	TArray<FString> Sentences;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

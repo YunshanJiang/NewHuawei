@@ -33,6 +33,7 @@ void ADataManager::LoadData()
 {
     FString DataPath = FPaths::ProjectDir() / TEXT("data/api.txt");
     FString CommonPath = FPaths::ProjectDir() / TEXT("data/common.txt");
+    FString SentencePath = FPaths::ProjectDir() / TEXT("data/sentence.txt");
     FString FileContent;
     
     // Load API map
@@ -76,6 +77,34 @@ void ADataManager::LoadData()
     else
     {
         UE_LOG(LogTemp, Warning, TEXT("Failed to load file: %s"), *CommonPath);
+    }
+
+	// Load sentence map
+    if (FFileHelper::LoadFileToStringArray(Sentences, *SentencePath))
+    {
+        // Lines now contains one FString per line of the file
+        for (FString& Line : Sentences)
+        {
+            
+            Line = Line.Replace(TEXT("\\n"), TEXT("\n"), ESearchCase::IgnoreCase);
+
+            
+            UE_LOG(LogTemp, Log, TEXT("Line: %s"), *Line);
+        }
+    }
+    // Load sentence map
+    if (FFileHelper::LoadFileToStringArray(Sentences, *SentencePath))
+    {
+        // Lines now contain one FString per line of the file
+        for (FString& Line : Sentences)
+        {
+            Line = Line.Replace(TEXT("\\n"), TEXT("\n"), ESearchCase::IgnoreCase);
+            UE_LOG(LogTemp, Log, TEXT("Line: %s"), *Line);
+        }
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to load file: %s"), *SentencePath);
     }
 }
 FString ADataManager::GetAPI(const FString& Key) const
