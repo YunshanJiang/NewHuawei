@@ -1,0 +1,4 @@
+{
+  "GetData": "https://h5.mixwechat.com/signature-canvas/data",
+  "PostData": "https://h5.mixwechat.com/signature-canvas/data/"
+}

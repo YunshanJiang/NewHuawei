@@ -1,0 +1,6 @@
+{
+  "width": 2352,
+  "height": 1008,
+  "fullscreen": false,
+  "language": "en"
+}
