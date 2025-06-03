@@ -101,8 +101,14 @@ void AAPIManager::LoadJsonData(FString& JsonContent)
 
     if (FJsonSerializer::Deserialize(JsonReader, JsonArray))
     {
+        int tempCounter = 0;
         for (const TSharedPtr<FJsonValue>& Value : JsonArray)
         {
+            tempCounter++;
+            if (PathArray.Num() >= tempCounter)
+            {
+				continue; // Skip if PathArray already has enough entries
+            }
             if (Value.IsValid() && Value->Type == EJson::Object)
             {
                 TSharedPtr<FJsonObject> JsonObject = Value->AsObject();
