@@ -1,6 +1,6 @@
 ﻿OTF, a global platform 
 For sharing insights and best\npractices on intelligent operations
-We met in London to launch the first OTF in 2014
+We met in London to launch\nthe first OTF in 2014
 Over the past decade
 Together, Single Sparkle to Full\nLights Global Best Practice
 AI Era, bring new opportunities
@@ -14,7 +14,7 @@ Value Scenarios Oriented
 Single Domain to Full Scenarios
 Converged Date Plus AI
 Digital Intelligent Life
-e-Payment，Delivery Rider，Live-\nstreamer
+e-Payment, Delivery Rider, Live-\nstreamer
 Personalized Marketing
 Idea-to-Cash
 Right People, Right Offer, Right\nPlace, Right Channel

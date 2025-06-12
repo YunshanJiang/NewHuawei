@@ -37,6 +37,8 @@ public:
 	int CheckIdIsShowing(int32 ID);
 	UFUNCTION(BlueprintCallable, Category = "InteractiveV")
 	void InitUITextToggleTrackArray(int32 count);
+	UFUNCTION(BlueprintCallable, Category = "InteractiveV")
+	int getRandomUnuseSeat(TArray<bool> animateArray);
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
