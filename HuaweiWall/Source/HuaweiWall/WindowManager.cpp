@@ -35,7 +35,8 @@ void AWindowManager::SetWindowAlwaysOnTop()
     HWND hWnd = GetActiveWindow();
     if (hWnd)
     {
-       
+        //int w = GetSystemMetrics(SM_CXSCREEN);
+        //int h = GetSystemMetrics(SM_CYSCREEN);
         LONG Style = GetWindowLong(hWnd, GWL_STYLE);
         Style &= ~(WS_BORDER | WS_DLGFRAME | WS_THICKFRAME);
         Style |= WS_POPUP;
